@@ -259,7 +259,7 @@
             </div>
 
             <!-- ===== TTD PENGAJU ===== -->
-            <div class="md:col-span-2 border-t pt-4 mt-4">
+            <div class="md:col-span-2 border-t pt-4 mt-2">
 
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                     Tanda Tangan Pengaju (Upload Gambar)

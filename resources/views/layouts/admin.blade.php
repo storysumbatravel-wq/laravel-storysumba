@@ -22,7 +22,7 @@
         ::-webkit-scrollbar-thumb { background: #c93d27; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #a7331e; }
 
-        /* Sidebar Widths - Paksa dengan !important */
+        /* Sidebar Widths */
         .sidebar-expanded { width: 256px !important; } /* w-64 */
         .sidebar-collapsed { width: 80px !important; }  /* w-20 */
 
@@ -39,20 +39,49 @@
             visibility: hidden;
             width: 0;
             white-space: nowrap;
+            overflow: hidden;
         }
-        .sidebar-collapsed .sidebar-section-title { display: none; }
-        .sidebar-collapsed .sidebar-user-details { display: none; }
-        .sidebar-collapsed .sidebar-logo-text { display: none; }
+
+        .sidebar-collapsed .sidebar-section-title {
+            display: none;
+        }
+
+        .sidebar-collapsed .sidebar-user-details {
+            display: none;
+        }
+
+        .sidebar-collapsed .sidebar-logo-text {
+            display: none;
+        }
 
         /* Center konten saat collapsed */
         .sidebar-collapsed .sidebar-item-inner {
             justify-content: center;
             padding-left: 0;
             padding-right: 0;
+            width: 100%;
         }
-        .sidebar-collapsed .sidebar-logo-container {
+
+        /* Hilangkan padding pada link menu saat collapsed agar icon benar-benar center */
+        .sidebar-collapsed nav a {
+            padding-left: 0;
+            padding-right: 0;
             justify-content: center;
         }
+
+        .sidebar-collapsed .sidebar-logo-container {
+            justify-content: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* Hilangkan padding container logo saat collapsed */
+        .sidebar-collapsed .logo-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+            justify-content: center;
+        }
+
         .sidebar-collapsed .sidebar-user-avatar {
             margin-left: auto;
             margin-right: auto;
@@ -67,11 +96,10 @@
         <aside id="sidebar" class="sidebar-expanded bg-luxury-900 text-white flex flex-col h-screen fixed lg:static inset-y-0 left-0 z-50 -translate-x-full lg:translate-x-0">
 
             <!-- Logo -->
-            <div class="h-20 border-b border-white/10 flex items-center px-4">
+            <!-- Tambahkan class logo-wrapper untuk kontrol padding -->
+            <div class="logo-wrapper h-20 border-b border-white/10 flex items-center px-4">
                 <a href="{{ route('admin.dashboard') }}" class="sidebar-logo-container flex items-center gap-3 w-full overflow-hidden">
-                    <!-- BAGIAN LOGO DIUBAH DI SINI -->
                     <div class="w-10 h-10 flex-shrink-0 bg-gradient-to-br rounded-lg flex items-center justify-center overflow-hidden">
-                        <!-- SVG diganti menjadi Image -->
                         <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-8 h-8 object-contain">
                     </div>
                     <span class="sidebar-logo-text sidebar-text font-display text-xl font-semibold whitespace-nowrap transition-opacity duration-300">Story<span class="text-red-400">Sumba</span></span>
@@ -142,6 +170,18 @@
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Pengajuan Budget</span>
                     </div>
                 </a>
+
+                <!-- DIPERBAIKI: Menu Finance Report -->
+                <a href="{{ route('admin.finance-reports.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors {{ request()->routeIs('admin.finance-reports.*') ? 'bg-red-500 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white' }}">
+                    <div class="sidebar-item-inner flex items-center gap-3 w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 flex-shrink-0">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v7.5m2.25-6.466a9.016 9.016 0 0 0-3.461-.203c-.536.072-.974.478-1.021 1.017a4.559 4.559 0 0 0-.018.402c0 .464.336.844.775.994l2.95 1.012c.44.15.775.53.775.994 0 .136-.006.27-.018.402-.047.539-.485.945-1.021 1.017a9.077 9.077 0 0 1-3.461-.203M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                        </svg>
+                        <!-- Perbaikan: Memisahkan teks ke dalam class sidebar-text -->
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Finance Report</span>
+                    </div>
+                </a>
+
             </nav>
 
             <!-- User Info -->

@@ -1,4 +1,5 @@
 <?php
+// routes/web.php
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
@@ -8,7 +9,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Admin\PengajuanController; // ✅ TAMBAHAN
+use App\Http\Controllers\Admin\PengajuanController;
+use App\Http\Controllers\Admin\FinanceReportController; // ✅ TAMBAHAN
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
 
@@ -99,45 +101,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
         // =======================
-        // PENGAJUAN CRUD  ✅ TAMBAHAN
+        // PENGAJUAN CRUD
         // =======================
-
-        // Resource Controller (index, create, store, show, edit, update, destroy)
         Route::resource('pengajuans', PengajuanController::class);
-
-        // Export / Cetak PDF Pengajuan
-        Route::get(
-            '/pengajuans/{pengajuan}/pdf',
-            [PengajuanController::class, 'pdf']
-        )->name('pengajuans.pdf');
+        Route::get('/pengajuans/{pengajuan}/pdf', [PengajuanController::class, 'pdf'])->name('pengajuans.pdf');
 
 
         // ==========================================
         // BOOKINGS MANAGEMENT
         // ==========================================
-
-        // 1. Create Form
         Route::get('/bookings/create', [DashboardController::class, 'createBooking'])->name('bookings.create');
-
-        // 2. Get Pricing API
         Route::get('/bookings/get-pricing/{id}', [DashboardController::class, 'getPackagePricing'])->name('bookings.get-pricing');
-
-        // 3. Store Manual Booking
         Route::post('/bookings/store-manual', [DashboardController::class, 'storeManualBooking'])->name('bookings.store-manual');
-
-        // 4. Index (List)
         Route::get('/bookings', [DashboardController::class, 'bookings'])->name('bookings.index');
-
-        // 5. Show Detail
         Route::get('/bookings/{id}', [DashboardController::class, 'bookingDetail'])->name('bookings.show');
-
-        // 6. Update Status
         Route::put('/bookings/{id}/status', [DashboardController::class, 'updateBookingStatus'])->name('bookings.update-status');
-
-        // 7. Delete
         Route::delete('/bookings/{id}', [DashboardController::class, 'destroyBooking'])->name('bookings.destroy');
-
-        // Invoice
         Route::get('/bookings/{id}/invoice', [DashboardController::class, 'generateInvoice'])->name('bookings.invoice');
 
 
@@ -153,5 +132,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // =======================
         Route::get('/reports', [DashboardController::class, 'reports'])->name('reports');
         Route::get('/reports/export', [DashboardController::class, 'exportReport'])->name('reports.export');
+
+
+        // =======================
+        // FINANCE REPORTS CRUD  ✅ TAMBAHAN BARU
+        // =======================
+        Route::resource('finance-reports', FinanceReportController::class);
+        Route::get('/finance-reports/export/csv', [FinanceReportController::class, 'export'])->name('finance-reports.export');
+        Route::get('/finance-reports/print/pdf', [FinanceReportController::class, 'pdf'])->name('finance-reports.pdf');
     });
 });
