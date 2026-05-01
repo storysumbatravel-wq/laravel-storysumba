@@ -52,11 +52,11 @@ return [
     // About
     'about.title' => 'Tentang StorySumba',
     'about.subtitle' => 'Partner terpercaya untuk perjalanan luar biasa',
-    'about.desc' => 'Selama lebih dari satu dekade, StorySumba telah menciptakan pengalaman perjalanan tak terlupakan untuk wisatawan eksklusif di seluruh dunia. Komitmen kami terhadap keunggulan, perhatian terhadap detail, dan layanan personal membedakan kami.',
-    'about.stat1' => 'Wisatawan Bahagia',
+    'about.desc' => 'Kami adalah travel agent profesional yang menghadirkan pengalaman wisata berkualitas, aman, dan berkesan dengan pelayanan terbaik.',
+    'about.stat1' => 'Ijin Pariwisata',
     'about.stat2' => 'Destinasi',
-    'about.stat3' => 'Tahun Pengalaman',
-    'about.stat4' => 'Penghargaan',
+    'about.stat3' => 'Asuransi Perjalanan',
+    // 'about.stat4' => 'Penghargaan',
 
     // About Page Specifics
     'about' => [
@@ -64,10 +64,9 @@ return [
         'meta_description' => 'Pelajari tentang StorySumba, mitra terpercaya Anda untuk pengalaman perjalanan mewah yang luar biasa. Cerita, misi, dan komitmen kami terhadap keunggulan.',
 
         'our_story' => 'Cerita Kami',
-        'story_title' => 'Mewujudkan Mimpi Menjadi Kenyataan',
-        'story_p1' => 'Didirikan pada tahun 2010, StorySumba memulai dengan visi sederhana: mengubah perjalanan biasa menjadi perjalanan luar biasa. Yang mulai sebagai agen perjalanan butik kecil telah berkembang menjadi tujuan utama bagi wisatawan yang mencari pengalaman unik dan personal.',
-        'story_p2' => 'Tim konsultan perjalanan ahli kami menggabungkan pengalaman puluhan tahun di bidang perhotelan mewah, manajemen tujuan, dan perencanaan perjalanan khusus. Kami percaya bahwa bepergian bukan hanya tentang mengunjungi tempat—tetapi tentang menciptakan kenangan abadi dan koneksi yang bermakna.',
-        'story_p3' => 'Saat ini, kami dengan bangga melayani klien dari seluruh dunia, menawarkan pengalaman pilihan di lebih dari 50 tujuan di 6 benua. Dari liburan romantis di Maladewa hingga pencerahan budaya di Jepang, setiap perjalanan yang kami rancang adalah bukti komitmen kami terhadap keunggulan.',
+        'story_title' => 'Kisah Perjalanan Pilihan Kami',
+        'story_p1' => 'Story Sumba lahir dari apresiasi mendalam terhadap keindahan alam dan warisan budaya Sumba. Kami merancang perjalanan yang memadukan kenyamanan, keaslian, dan penceritaan yang mendalam..',
+        'story_p2' => 'Dari sabana yang dramatis hingga tradisi sakral, setiap pengalaman dirancang dengan presisi dan perhatian — memastikan perjalanan Anda lancar dan bermakna.',
 
         'mission_title' => 'Misi Kami',
         'mission_text' => 'Menyediakan pengalaman perjalanan yang luar biasa yang melampaui harapan, menggabungkan kemewahan, keaslian, dan layanan personal untuk menciptakan kenangan tak terlupakan bagi setiap wisatawan yang kami layani.',
@@ -75,8 +74,12 @@ return [
         'vision_title' => 'Visi Kami',
         'vision_text' => 'Menjadi mitra perjalanan mewah paling dipercaya di dunia, dikenal karena pendekatan inovatif kami, praktik berkelanjutan, dan komitmen tak tergoyahkan untuk menciptakan pengalaman perjalanan yang transformatif.',
 
-        'achievement_title' => 'Pencapaian Kami',
+        'achievement_title' => 'Filosofi Inti Kami',
         'achievement_subtitle' => 'Angka Yang Berbicara',
+
+        'our_story2' => 'Tim Kami',
+        'story_title2' => 'Koordinator Guide',
+        'story_p12' => 'Evan (Frans Edberg Stevan) adalah driver dan tour guide local yang berpengalaman belasan tahun yang siap melayani anda',
 
         'team_title' => 'Tim Kami',
         'team_subtitle' => 'Temui Para Ahli',

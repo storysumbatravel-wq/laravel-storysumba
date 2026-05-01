@@ -52,10 +52,10 @@ return [
     // About
     'about.title' => 'About StorySumba',
     'about.subtitle' => 'Your trusted partner for extraordinary journeys',
-    'about.desc' => 'For over a decade, StorySumba has been crafting unforgettable travel experiences for discerning travelers worldwide. Our commitment to excellence, attention to detail, and personalized service sets us apart.',
-    'about.stat1' => 'Happy Travelers',
-    'about.stat2' => 'Destinations',
-    'about.stat3' => 'Years Experience',
+    'about.desc' => 'We are a professional travel agent delivering high-quality, safe, and memorable travel experiences with excellent service.',
+    'about.stat1' => 'Tourism Permit',
+    'about.stat2' => 'Destination',
+    'about.stat3' => 'Travel Insurance',
     'about.stat4' => 'Awards Won',
 
      // About Page Specifics
@@ -64,10 +64,9 @@ return [
         'meta_description' => 'Learn about StorySumba, your trusted partner for extraordinary luxury travel experiences. Our story, mission, and commitment to excellence.',
 
         'our_story' => 'Our Story',
-        'story_title' => 'Crafting Dreams Into Reality',
-        'story_p1' => 'Founded in 2010, StorySumba began with a simple vision: to transform ordinary trips into extraordinary journeys. What started as a small boutique travel agency has grown into a premier destination for discerning travelers seeking unique, personalized experiences.',
-        'story_p2' => 'Our team of expert travel consultants brings together decades of combined experience in luxury hospitality, destination management, and bespoke itinerary planning. We believe that travel should be more than just visiting places—it should be about creating lasting memories and meaningful connections.',
-        'story_p3' => 'Today, we proudly serve clients from around the globe, offering curated experiences in over 50 destinations across 6 continents. From romantic getaways in the Maldives to cultural immersions in Japan, every journey we craft is a testament to our commitment to excellence.',
+        'story_title' => 'Our Story of Curated Journeys',
+        'story_p1' => 'Story Sumba was born from a deep appreciation of Sumba’s raw beauty and cultural heritage. We design journeys that blend comfort, authenticity, and immersive storytelling.',
+        'story_p2' => 'From dramatic savannas to sacred traditions, every experience is crafted with precision and care — ensuring your journey is seamless and meaningful.',
 
         'mission_title' => 'Our Mission',
         'mission_text' => 'To provide exceptional travel experiences that exceed expectations, combining luxury, authenticity, and personalized service to create unforgettable memories for every traveler we serve.',
@@ -77,6 +76,10 @@ return [
 
         'achievement_title' => 'Our Achievement',
         'achievement_subtitle' => 'Numbers That Speak',
+
+        'our_story2' => 'Our Team',
+        'story_title2' => 'Guide Coordinator',
+        'story_p12' => 'Evan (Frans Edberg Stevan) is a local driver and tour guide with decades of experience who is ready to serve you.',
 
         'team_title' => 'Our Team',
         'team_subtitle' => 'Meet The Experts',

@@ -17,9 +17,9 @@
         <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
             {{ __('messages.about.subtitle') }}
         </h1>
-        <p class="text-xl text-white/80 max-w-2xl mx-auto">
+        {{-- <p class="text-xl text-white/80 max-w-2xl mx-auto">
             {{ __('messages.about.desc') }}
-        </p>
+        </p> --}}
     </div>
 </section>
 
@@ -89,7 +89,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-24 px-4">
+{{-- <section class="py-24 px-4">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <span class="inline-block px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
@@ -118,50 +118,43 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- Team Section -->
-<section class="py-24 bg-luxury-50 px-4">
+<section class="py-24 px-4">
     <div class="max-w-7xl mx-auto">
-        <!-- Header Section (tidak berubah) -->
-        <div class="text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
-                {{ __('messages.about.team_title') }}
-            </span>
-            <h2 class="font-display text-4xl font-bold text-luxury-900 mb-4">
-                {{ __('messages.about.team_subtitle') }}
-            </h2>
-            <p class="text-luxury-600 max-w-2xl mx-auto">
-                {{ __('messages.about.team_desc') }}
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            @php
-            // UBAH NILAI 'image' SESUAI NAMA FILE DI PUBLIC/IMAGES
-            $team = [
-                ['name' => 'Evan Fransbergh', 'role_key' => 'guide', 'image' => 'evan.jpg'],
-                // ['name' => 'Michael Chen', 'role_key' => 'operations', 'image' => 'team-michael.jpg'],
-                // ['name' => 'Emily Rodriguez', 'role_key' => 'consultant', 'image' => 'team-emily.jpg'],
-                // ['name' => 'David Kim', 'role_key' => 'relations', 'image' => 'team-david.jpg'],
-            ];
-            @endphp
-
-            @foreach($team as $member)
-            <div class="bg-white rounded-2xl shadow-luxury overflow-hidden group">
-                <div class="h-64 overflow-hidden">
-                    <!-- Kode ini akan menghasilkan url: http://localhost:8000/images/namafile.jpg -->
-                    <img src="{{ asset('images/' . $member['image']) }}" alt="{{ $member['name'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-6 text-center">
-                    <h4 class="font-display text-xl font-semibold text-luxury-900">{{ $member['name'] }}</h4>
-                    <p class="text-red-600 text-sm">{{ __('messages.about.role_' . $member['role_key']) }}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <img src="{{ asset('images/evan.jpg') }}" alt="Our Story" class="rounded-2xl shadow-luxury w-full">
+                <div class="absolute -bottom-6 -right-6 bg-red-500 text-white p-6 rounded-2xl shadow-lg hidden md:block">
+                    <p class="font-display text-4xl font-bold">15+</p>
+                    <p class="text-red-100 text-sm">{{ __('messages.about.stat3') }}</p>
                 </div>
             </div>
-            @endforeach
+            <div>
+                <span class="inline-block px-4 py-2 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
+                    {{ __('messages.about.our_story2') }}
+                </span>
+                <h2 class="font-display text-4xl font-bold text-luxury-900 mb-6">
+                    {{ __('messages.about.story_title2') }}
+                </h2>
+                <div class="prose prose-lg text-luxury-600 space-y-4">
+                    <p>
+                        {{ __('messages.about.story_p12') }}
+                    </p>
+                    {{-- <p>
+                        {{ __('messages.about.story_p2') }}
+                    </p> --}}
+                    {{-- <p>
+                        {{ __('messages.about.story_p3') }}
+                    </p> --}}
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+
 
 <!-- Why Choose Us -->
 <section class="py-24 px-4">
