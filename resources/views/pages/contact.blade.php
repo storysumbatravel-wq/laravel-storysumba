@@ -12,7 +12,7 @@
     </div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="inline-block px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-sm font-medium mb-6">
-            Get In Touch
+            {{ __('messages.contact.badge') }}
         </span>
         <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
             {{ __('messages.contact.title') }}
@@ -86,10 +86,10 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="font-display text-lg font-semibold text-luxury-900 mb-1">Operating Hours</h3>
-                            <p class="text-luxury-600">Mon - Fri: 09:00 - 18:00</p>
-                            <p class="text-luxury-600">Sat: 09:00 - 15:00</p>
-                            <p class="text-red-600 text-sm mt-1">24/7 Support for Clients</p>
+                            <h3 class="font-display text-lg font-semibold text-luxury-900 mb-1">{{ __('messages.contact.operating_hours') }}</h3>
+                            <p class="text-luxury-600">{{ __('messages.contact.hours_weekday') }}</p>
+                            <p class="text-luxury-600">{{ __('messages.contact.hours_saturday') }}</p>
+                            <p class="text-red-600 text-sm mt-1">{{ __('messages.contact.support_note') }}</p>
                         </div>
                     </div>
                 </div>
@@ -98,8 +98,8 @@
             <!-- Contact Form -->
             <div class="lg:col-span-2">
                 <div class="bg-white rounded-3xl shadow-luxury p-8 md:p-12">
-                    <h2 class="font-display text-3xl font-bold text-luxury-900 mb-2">Send Us a Message</h2>
-                    <p class="text-luxury-500 mb-8">Fill out the form below and our team will get back to you within 24 hours.</p>
+                    <h2 class="font-display text-3xl font-bold text-luxury-900 mb-2">{{ __('messages.contact.form_title') }}</h2>
+                    <p class="text-luxury-500 mb-8">{{ __('messages.contact.form_desc') }}</p>
 
                     @if(session('success'))
                     <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
@@ -118,7 +118,7 @@
                                 <label for="name" class="block text-sm font-medium text-luxury-700 mb-2">{{ __('messages.contact.name') }} *</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" required
                                        class="w-full px-4 py-3 bg-luxury-50 border border-luxury-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-luxury-400"
-                                       placeholder="Your Name">
+                                       placeholder="{{ __('messages.contact.placeholder_name') }}">
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -128,7 +128,7 @@
                                 <label for="email" class="block text-sm font-medium text-luxury-700 mb-2">{{ __('messages.contact.email') }} *</label>
                                 <input type="email" name="email" id="email" value="{{ old('email') }}" required
                                        class="w-full px-4 py-3 bg-luxury-50 border border-luxury-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-luxury-400"
-                                       placeholder="john@example.com">
+                                       placeholder="{{ __('messages.contact.placeholder_email') }}">
                                 @error('email')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                                 @enderror
@@ -140,20 +140,20 @@
                                 <label for="phone" class="block text-sm font-medium text-luxury-700 mb-2">{{ __('messages.contact.phone') }}</label>
                                 <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
                                        class="w-full px-4 py-3 bg-luxury-50 border border-luxury-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-luxury-400"
-                                       placeholder="+62 812 3456 7890">
+                                       placeholder="{{ __('messages.contact.placeholder_phone') }}">
                             </div>
 
                             <div>
                                 <label for="subject" class="block text-sm font-medium text-luxury-700 mb-2">{{ __('messages.contact.subject') }} *</label>
                                 <select name="subject" id="subject" required
                                         class="w-full px-4 py-3 bg-luxury-50 border border-luxury-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all appearance-none cursor-pointer">
-                                    <option value="">Select a subject</option>
-                                    <option value="General Inquiry" {{ old('subject') == 'General Inquiry' ? 'selected' : '' }}>General Inquiry</option>
-                                    <option value="Booking Question" {{ old('subject') == 'Booking Question' ? 'selected' : '' }}>Booking Question</option>
-                                    <option value="Custom Trip Request" {{ old('subject') == 'Custom Trip Request' ? 'selected' : '' }}>Custom Trip Request</option>
-                                    <option value="Partnership" {{ old('subject') == 'Partnership' ? 'selected' : '' }}>Partnership</option>
-                                    <option value="Feedback" {{ old('subject') == 'Feedback' ? 'selected' : '' }}>Feedback</option>
-                                    <option value="Other" {{ old('subject') == 'Other' ? 'selected' : '' }}>Other</option>
+                                    <option value="">{{ __('messages.contact.placeholder_subject') }}</option>
+                                    <option value="General Inquiry" {{ old('subject') == 'General Inquiry' ? 'selected' : '' }}>{{ __('messages.contact.subject_general') }}</option>
+                                    <option value="Booking Question" {{ old('subject') == 'Booking Question' ? 'selected' : '' }}>{{ __('messages.contact.subject_booking') }}</option>
+                                    <option value="Custom Trip Request" {{ old('subject') == 'Custom Trip Request' ? 'selected' : '' }}>{{ __('messages.contact.subject_custom') }}</option>
+                                    <option value="Partnership" {{ old('subject') == 'Partnership' ? 'selected' : '' }}>{{ __('messages.contact.subject_partnership') }}</option>
+                                    <option value="Feedback" {{ old('subject') == 'Feedback' ? 'selected' : '' }}>{{ __('messages.contact.subject_feedback') }}</option>
+                                    <option value="Other" {{ old('subject') == 'Other' ? 'selected' : '' }}>{{ __('messages.contact.subject_other') }}</option>
                                 </select>
                                 @error('subject')
                                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -165,7 +165,7 @@
                             <label for="message" class="block text-sm font-medium text-luxury-700 mb-2">{{ __('messages.contact.message') }} *</label>
                             <textarea name="message" id="message" rows="5" required
                                       class="w-full px-4 py-3 bg-luxury-50 border border-luxury-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-luxury-400 resize-none"
-                                      placeholder="Tell us about your travel plans or questions...">{{ old('message') }}</textarea>
+                                      placeholder="{{ __('messages.contact.placeholder_message') }}">{{ old('message') }}</textarea>
                             @error('message')
                                 <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                             @enderror
@@ -173,7 +173,7 @@
 
                         <div class="flex items-center gap-3">
                             <input type="checkbox" name="newsletter" id="newsletter" value="1" class="w-5 h-5 text-red-600 rounded border-luxury-300 focus:ring-red-500">
-                            <label for="newsletter" class="text-sm text-luxury-600">Subscribe to our newsletter for exclusive offers</label>
+                            <label for="newsletter" class="text-sm text-luxury-600">{{ __('messages.contact.newsletter') }}</label>
                         </div>
 
                         <button type="submit" class="w-full py-4 bg-red-500 text-white rounded-xl font-bold text-lg hover:bg-red-600 transition-all shadow-red hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
@@ -194,28 +194,15 @@
     <div class="max-w-7xl mx-auto">
         <div class="bg-white rounded-3xl shadow-luxury overflow-hidden">
             <div class="h-96 bg-luxury-100 relative">
-                <!-- Embedded Google Map (Placeholder) -->
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4219!2d106.82050!3d-6.20876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMzEuNSJTIDEwNsKwNDknMTMuOCJF!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    class="grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Embedded Google Map -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7866.444826685595!2d120.26803550418423!3d-9.662028137958316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c9b294756f9cd%3A0x7fea0ee0bb898e2a!2sStorysumba!5e0!3m2!1sid!2sid!4v1777646565402!5m2!1sid!2sid"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-
-                <!-- Overlay Info -->
-                <div class="absolute top-6 left-6 bg-white p-4 rounded-xl shadow-lg max-w-xs">
-                    <h4 class="font-display font-bold text-luxury-900 mb-1">StorySumba HQ</h4>
-                    <p class="text-sm text-luxury-600 mb-3">Jl. Sudirman No. 123, Jakarta</p>
-                    <a href="https://maps.google.com" target="_blank" class="text-red-600 text-sm font-medium hover:underline flex items-center gap-1">
-                        Get Directions
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                        </svg>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -225,60 +212,60 @@
 <section class="py-20 bg-luxury-50 px-4">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-luxury-900 mb-4">Frequently Asked Questions</h2>
-            <p class="text-luxury-600">Quick answers to common questions</p>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-luxury-900 mb-4">{{ __('messages.faq.title') }}</h2>
+            <p class="text-luxury-600">{{ __('messages.faq.subtitle') }}</p>
         </div>
 
         <div class="space-y-4">
             <!-- FAQ Item 1 -->
             <details class="bg-white rounded-2xl shadow-luxury group">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span class="font-semibold text-luxury-900">How do I make a booking?</span>
+                    <span class="font-semibold text-luxury-900">{{ __('messages.faq.q1') }}</span>
                     <svg class="w-5 h-5 text-red-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </summary>
                 <div class="px-6 pb-6 text-luxury-600">
-                    You can book directly through our website by selecting your desired package or car rental. Alternatively, contact our team via phone, email, or WhatsApp for personalized assistance.
+                    {{ __('messages.faq.a1') }}
                 </div>
             </details>
 
             <!-- FAQ Item 2 -->
             <details class="bg-white rounded-2xl shadow-luxury group">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span class="font-semibold text-luxury-900">What payment methods do you accept?</span>
+                    <span class="font-semibold text-luxury-900">{{ __('messages.faq.q2') }}</span>
                     <svg class="w-5 h-5 text-red-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </summary>
                 <div class="px-6 pb-6 text-luxury-600">
-                    We accept bank transfers, credit/debit cards (Visa, Mastercard), and various digital payment platforms. Installment plans are also available for select packages.
+                    {{ __('messages.faq.a2') }}
                 </div>
             </details>
 
             <!-- FAQ Item 3 -->
             <details class="bg-white rounded-2xl shadow-luxury group">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span class="font-semibold text-luxury-900">Can I customize my travel package?</span>
+                    <span class="font-semibold text-luxury-900">{{ __('messages.faq.q3') }}</span>
                     <svg class="w-5 h-5 text-red-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </summary>
                 <div class="px-6 pb-6 text-luxury-600">
-                    Absolutely! We specialize in creating bespoke travel experiences. Contact our team with your preferences, and we'll craft a personalized itinerary just for you.
+                    {{ __('messages.faq.a3') }}
                 </div>
             </details>
 
             <!-- FAQ Item 4 -->
             <details class="bg-white rounded-2xl shadow-luxury group">
                 <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
-                    <span class="font-semibold text-luxury-900">What is your cancellation policy?</span>
+                    <span class="font-semibold text-luxury-900">{{ __('messages.faq.q4') }}</span>
                     <svg class="w-5 h-5 text-red-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </summary>
                 <div class="px-6 pb-6 text-luxury-600">
-                    Cancellation policies vary by package and timing. Generally, cancellations made 30+ days before departure receive a full refund. Please refer to specific package terms or contact us for details.
+                    {{ __('messages.faq.a4') }}
                 </div>
             </details>
         </div>

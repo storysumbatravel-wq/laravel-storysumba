@@ -126,6 +126,27 @@ return [
     'contact.phone_label' => 'Phone',
     'contact.email_label' => 'Email',
 
+    // Contact Page Specifics (Added)
+    'contact.badge' => 'Get In Touch',
+    'contact.form_title' => 'Send Us a Message',
+    'contact.form_desc' => 'Fill out the form below and our team will get back to you within 24 hours.',
+    'contact.operating_hours' => 'Operating Hours',
+    'contact.hours_weekday' => 'Mon - Fri: 09:00 - 18:00',
+    'contact.hours_saturday' => 'Sat: 09:00 - 15:00',
+    'contact.support_note' => '24/7 Support for Clients',
+    'contact.placeholder_name' => 'Your Name',
+    'contact.placeholder_email' => 'john@example.com',
+    'contact.placeholder_phone' => '+62 812 3456 7890',
+    'contact.placeholder_subject' => 'Select a subject',
+    'contact.placeholder_message' => 'Tell us about your travel plans or questions...',
+    'contact.subject_general' => 'General Inquiry',
+    'contact.subject_booking' => 'Booking Question',
+    'contact.subject_custom' => 'Custom Trip Request',
+    'contact.subject_partnership' => 'Partnership',
+    'contact.subject_feedback' => 'Feedback',
+    'contact.subject_other' => 'Other',
+    'contact.newsletter' => 'Subscribe to our newsletter for exclusive offers',
+
     // Footer
     'footer.desc' => 'Creating extraordinary travel experiences since 2010. Your journey to luxury begins with us.',
     'footer.quick_links' => 'Quick Links',
@@ -146,4 +167,18 @@ return [
     'common.view_all' => 'View All',
     'common.see_more' => 'See More',
     'common.loading' => 'Loading...',
+
+    // FAQ
+    'faq' => [
+        'title' => 'Frequently Asked Questions',
+        'subtitle' => 'Quick answers to common questions',
+        'q1' => 'How do I make a booking?',
+        'a1' => 'You can book directly through our website by selecting your desired package or car rental. Alternatively, contact our team via phone, email, or WhatsApp for personalized assistance.',
+        'q2' => 'What payment methods do you accept?',
+        'a2' => 'We accept bank transfers, credit/debit cards (Visa, Mastercard), and various digital payment platforms.',
+        'q3' => 'Can I customize my travel package?',
+        'a3' => 'Absolutely! We specialize in creating bespoke travel experiences. Contact our team with your preferences, and we\'ll craft a personalized itinerary just for you.',
+        'q4' => 'What is your cancellation policy?',
+        'a4' => 'Cancellation policies vary by package and timing. Generally, Please refer to specific package terms or contact us for details.',
+    ],
 ];

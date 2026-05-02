@@ -56,16 +56,16 @@ return [
     'about.stat1' => 'Ijin Pariwisata',
     'about.stat2' => 'Destinasi',
     'about.stat3' => 'Asuransi Perjalanan',
-    // 'about.stat4' => 'Penghargaan',
+    'about.stat4' => 'Penghargaan',
 
-    // About Page Specifics
+     // About Page Specifics
     'about' => [
         'page_title' => 'Tentang Kami - StorySumba',
         'meta_description' => 'Pelajari tentang StorySumba, mitra terpercaya Anda untuk pengalaman perjalanan mewah yang luar biasa. Cerita, misi, dan komitmen kami terhadap keunggulan.',
 
         'our_story' => 'Cerita Kami',
         'story_title' => 'Kisah Perjalanan Pilihan Kami',
-        'story_p1' => 'Story Sumba lahir dari apresiasi mendalam terhadap keindahan alam dan warisan budaya Sumba. Kami merancang perjalanan yang memadukan kenyamanan, keaslian, dan penceritaan yang mendalam..',
+        'story_p1' => 'Story Sumba lahir dari apresiasi mendalam terhadap keindahan alam dan warisan budaya Sumba. Kami merancang perjalanan yang memadukan kenyamanan, keaslian, dan penceritaan yang mendalam.',
         'story_p2' => 'Dari sabana yang dramatis hingga tradisi sakral, setiap pengalaman dirancang dengan presisi dan perhatian — memastikan perjalanan Anda lancar dan bermakna.',
 
         'mission_title' => 'Misi Kami',
@@ -105,6 +105,7 @@ return [
         'cta_btn2' => 'Jelajahi Paket',
     ],
 
+
     // Blog
     'blog.title' => 'Wawasan Perjalanan',
     'blog.subtitle' => 'Cerita, tips, dan inspirasi untuk petualangan Anda berikutnya',
@@ -124,6 +125,27 @@ return [
     'contact.address' => 'Alamat',
     'contact.phone_label' => 'Telepon',
     'contact.email_label' => 'Email',
+
+    // Contact Page Specifics (Added)
+    'contact.badge' => 'Hubungi Kami',
+    'contact.form_title' => 'Kirim Pesan',
+    'contact.form_desc' => 'Isi formulir di bawah ini dan tim kami akan menghubungi Anda dalam waktu 24 jam.',
+    'contact.operating_hours' => 'Jam Operasional',
+    'contact.hours_weekday' => 'Senin - Jumat: 09:00 - 18:00',
+    'contact.hours_saturday' => 'Sabtu: 09:00 - 15:00',
+    'contact.support_note' => 'Dukungan 24/7 untuk Klien',
+    'contact.placeholder_name' => 'Nama Anda',
+    'contact.placeholder_email' => 'john@contoh.com',
+    'contact.placeholder_phone' => '+62 812 3456 7890',
+    'contact.placeholder_subject' => 'Pilih subjek',
+    'contact.placeholder_message' => 'Ceritakan rencana perjalanan atau pertanyaan Anda...',
+    'contact.subject_general' => 'Pertanyaan Umum',
+    'contact.subject_booking' => 'Pertanyaan Pemesanan',
+    'contact.subject_custom' => 'Permintaan Perjalanan Kustom',
+    'contact.subject_partnership' => 'Kemitraan',
+    'contact.subject_feedback' => 'Masukan',
+    'contact.subject_other' => 'Lainnya',
+    'contact.newsletter' => 'Berlangganan buletin kami untuk penawaran eksklusif',
 
     // Footer
     'footer.desc' => 'Menciptakan pengalaman perjalanan luar biasa sejak 2010. Perjalanan mewah Anda dimulai bersama kami.',
@@ -145,4 +167,18 @@ return [
     'common.view_all' => 'Lihat Semua',
     'common.see_more' => 'Lihat Lebih Banyak',
     'common.loading' => 'Memuat...',
+
+    // FAQ
+    'faq' => [
+        'title' => 'Pertanyaan yang Sering Diajukan',
+        'subtitle' => 'Jawaban cepat untuk pertanyaan umum',
+        'q1' => 'Bagaimana cara melakukan pemesanan?',
+        'a1' => 'Anda dapat memesan langsung melalui website kami dengan memilih paket atau sewa mobil yang diinginkan. Atau, hubungi tim kami melalui telepon, email, atau WhatsApp untuk bantuan personal.',
+        'q2' => 'Metode pembayaran apa saja yang diterima?',
+        'a2' => 'Kami menerima transfer bank, kartu kredit/debit (Visa, Mastercard), dan berbagai platform pembayaran digital.',
+        'q3' => 'Apakah saya bisa menyesuaikan paket wisata?',
+        'a3' => 'Tentu saja! Kami berspesialisasi dalam menciptakan pengalaman perjalanan yang dibuat khusus. Hubungi tim kami dengan preferensi Anda, dan kami akan menyusun rencana perjalanan yang dipersonalisasi untuk Anda.',
+        'q4' => 'Bagaimana kebijakan pembatalan Anda?',
+        'a4' => 'Kebijakan pembatalan bervariasi tergantung paket dan waktu. Silakan merujuk ke ketentuan paket spesifik atau hubungi kami untuk detailnya.',
+    ],
 ];
