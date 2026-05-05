@@ -27,6 +27,8 @@
         <table class="w-full">
             <thead class="bg-luxury-50 border-b border-luxury-100">
                 <tr>
+                    <!-- Tambahkan Kolom Image -->
+                    <th class="text-left px-6 py-4 text-xs font-semibold text-luxury-500 uppercase tracking-wider">Image</th>
                     <th class="text-left px-6 py-4 text-xs font-semibold text-luxury-500 uppercase tracking-wider">Package</th>
                     <th class="text-left px-6 py-4 text-xs font-semibold text-luxury-500 uppercase tracking-wider">Destination</th>
                     <th class="text-left px-6 py-4 text-xs font-semibold text-luxury-500 uppercase tracking-wider">Duration</th>
@@ -39,6 +41,12 @@
             <tbody class="divide-y divide-luxury-100">
                 @forelse($packages as $package)
                 <tr class="hover:bg-luxury-50 transition-colors">
+                    <!-- Kolom Image Baru -->
+                    <td class="px-6 py-4">
+                        <img src="{{ $package->image ? asset('storage/' . $package->image) : 'https://via.placeholder.com/100x60?text=No+Image' }}"
+                             alt="{{ $package->name_en }}"
+                             class="w-20 h-14 rounded-lg object-cover shadow-sm">
+                    </td>
                     <td class="px-6 py-4">
                         <div>
                             <p class="font-medium text-luxury-900">{{ $package->name_en }}</p>
@@ -99,7 +107,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="px-6 py-12 text-center text-luxury-500">
+                    <td colspan="8" class="px-6 py-12 text-center text-luxury-500">
                         No packages found. <a href="{{ route('admin.packages.create') }}" class="text-red-600 hover:underline">Create your first package</a>.
                     </td>
                 </tr>

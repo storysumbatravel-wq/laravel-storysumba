@@ -23,6 +23,7 @@ class PackageController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Validasi Dasar
         $validated = $request->validate([
             'name_en' => 'required|string|max:255',
             'name_id' => 'required|string|max:255',
@@ -30,20 +31,13 @@ class PackageController extends Controller
             'destination_id' => 'required|string|max:255',
             'description_en' => 'required',
             'description_id' => 'required',
-
             'duration_days' => 'required|integer',
             'duration_nights' => 'required|integer',
-
             'type' => 'required|in:domestic,international,honeymoon,adventure,luxury,tour',
             'max_pax' => 'nullable|integer',
-
             'image' => 'nullable|image|max:2048',
 
-            // Validasi Itinerary (Array)
-            'itinerary_en' => 'nullable|array',
-            'itinerary_id' => 'nullable|array',
-
-            // Validasi Include & Exclude (Array)
+            // Validasi Array
             'include_en' => 'nullable|array',
             'include_id' => 'nullable|array',
             'exclude_en' => 'nullable|array',
@@ -56,64 +50,63 @@ class PackageController extends Controller
             'pricing_options.*.cost' => 'nullable|numeric|min:0',
         ]);
 
-        // Upload Image
+        // 2. Upload Image
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('packages', 'public');
             $validated['image'] = $path;
         }
 
-        // Handle Itinerary (Logika manual jika input form berbentuk list terpisah)
-        // Jika di form Anda menggunakan name="itinerary_en[][title]" maka bisa langsung $validated.
-        // Tapi jika di form pakai name="itinerary_title_en[]" (array terpisah), gunakan logika merge berikut:
-
-        // Cek apakah input datang terpisah (sesuai kode awal Anda) atau sudah gabungan
+        // 3. Handle Itinerary (Logika Merge dari input terpisah)
         if ($request->has('itinerary_title_en')) {
             $itineraryEn = [];
             $itineraryId = [];
             foreach ($request->itinerary_title_en as $index => $titleEn) {
-                $itineraryEn[] = [
-                    'title' => $titleEn,
-                    'description' => $request->itinerary_desc_en[$index] ?? ''
-                ];
-                $itineraryId[] = [
-                    'title' => $request->itinerary_title_id[$index] ?? '',
-                    'description' => $request->itinerary_desc_id[$index] ?? ''
-                ];
+                // Hanya simpan jika title tidak kosong
+                if (!empty($titleEn) || !empty($request->itinerary_title_id[$index])) {
+                    $itineraryEn[] = [
+                        'title' => $titleEn,
+                        'description' => $request->itinerary_desc_en[$index] ?? ''
+                    ];
+                    $itineraryId[] = [
+                        'title' => $request->itinerary_title_id[$index] ?? '',
+                        'description' => $request->itinerary_desc_id[$index] ?? ''
+                    ];
+                }
             }
             $validated['itinerary_en'] = $itineraryEn;
             $validated['itinerary_id'] = $itineraryId;
         } else {
-            // Jika tidak ada input, set null
             $validated['itinerary_en'] = null;
             $validated['itinerary_id'] = null;
         }
 
-        // Includes & Excludes
-        // PERBAIKAN: Menggunakan 'include_en' (singular) sesuai kolom DB
-        // Filter untuk menghapus nilai kosong
-        $validated['include_en'] = array_filter($request->include_en ?? []);
-        $validated['include_id'] = array_filter($request->include_id ?? []);
-        $validated['exclude_en'] = array_filter($request->exclude_en ?? []);
-        $validated['exclude_id'] = array_filter($request->exclude_id ?? []);
+        // 4. Logika Menyimpan Array (Include, Exclude) - Sesuai permintaan Anda
+        // Menggunakan array_filter untuk menghapus nilai kosong dari form
+        $validated['include_en'] = array_filter($request->input('include_en', []));
+        $validated['include_id'] = array_filter($request->input('include_id', []));
+        $validated['exclude_en'] = array_filter($request->input('exclude_en', []));
+        $validated['exclude_id'] = array_filter($request->input('exclude_id', []));
 
-        // Slug & Status
+        // 5. Slug & Status
         $validated['slug'] = Str::slug($validated['name_en']);
         $validated['is_featured'] = $request->has('is_featured');
         $validated['is_active'] = $request->has('is_active');
 
-        // Save Package
+        // 6. Simpan Package (Pisahkan pricing options dulu)
         $pricingOptions = $request->pricing_options;
-        unset($validated['pricing_options']); // Hapus dari validated array karena disimpan via relasi
+        unset($validated['pricing_options']);
 
         $package = Package::create($validated);
 
-        // Save Pricing Options
-        foreach ($pricingOptions as $option) {
-            $package->pricingOptions()->create([
-                'pax' => $option['pax'],
-                'price' => $option['price'],
-                'cost' => $option['cost'] ?? 0,
-            ]);
+        // 7. Simpan Pricing Options
+        if ($pricingOptions) {
+            foreach ($pricingOptions as $option) {
+                $package->pricingOptions()->create([
+                    'pax' => $option['pax'],
+                    'price' => $option['price'],
+                    'cost' => $option['cost'] ?? 0,
+                ]);
+            }
         }
 
         return redirect()->route('admin.packages.index')
@@ -134,6 +127,7 @@ class PackageController extends Controller
 
     public function update(Request $request, Package $package)
     {
+        // 1. Validasi Dasar
         $validated = $request->validate([
             'name_en' => 'required|string|max:255',
             'name_id' => 'required|string|max:255',
@@ -147,11 +141,7 @@ class PackageController extends Controller
             'max_pax' => 'nullable|integer',
             'image' => 'nullable|image|max:2048',
 
-            // Validasi Itinerary
-            'itinerary_en' => 'nullable|array',
-            'itinerary_id' => 'nullable|array',
-
-            // Validasi Include & Exclude
+            // Validasi Array
             'include_en' => 'nullable|array',
             'include_id' => 'nullable|array',
             'exclude_en' => 'nullable|array',
@@ -164,7 +154,7 @@ class PackageController extends Controller
             'pricing_options.*.cost' => 'nullable|numeric|min:0',
         ]);
 
-        // Upload image
+        // 2. Upload Image
         if ($request->hasFile('image')) {
             if ($package->image && Storage::disk('public')->exists($package->image)) {
                 Storage::disk('public')->delete($package->image);
@@ -172,13 +162,15 @@ class PackageController extends Controller
             $validated['image'] = $request->file('image')->store('packages', 'public');
         }
 
-        // Itinerary
+        // 3. Handle Itinerary
         if ($request->has('itinerary_title_en')) {
             $itineraryEn = [];
             $itineraryId = [];
             foreach ($request->itinerary_title_en as $i => $titleEn) {
-                $itineraryEn[] = ['title' => $titleEn, 'description' => $request->itinerary_desc_en[$i] ?? ''];
-                $itineraryId[] = ['title' => $request->itinerary_title_id[$i] ?? '', 'description' => $request->itinerary_desc_id[$i] ?? ''];
+                if (!empty($titleEn) || !empty($request->itinerary_title_id[$i])) {
+                    $itineraryEn[] = ['title' => $titleEn, 'description' => $request->itinerary_desc_en[$i] ?? ''];
+                    $itineraryId[] = ['title' => $request->itinerary_title_id[$i] ?? '', 'description' => $request->itinerary_desc_id[$i] ?? ''];
+                }
             }
             $validated['itinerary_en'] = $itineraryEn;
             $validated['itinerary_id'] = $itineraryId;
@@ -187,23 +179,22 @@ class PackageController extends Controller
             $validated['itinerary_id'] = null;
         }
 
-        // Includes / Excludes
-        // PERBAIKAN: Menggunakan 'include_en' (singular)
-        $validated['include_en'] = array_filter($request->include_en ?? []);
-        $validated['include_id'] = array_filter($request->include_id ?? []);
-        $validated['exclude_en'] = array_filter($request->exclude_en ?? []);
-        $validated['exclude_id'] = array_filter($request->exclude_id ?? []);
+        // 4. Logika Update Array (Include, Exclude) - Sesuai permintaan Anda
+        $validated['include_en'] = array_filter($request->input('include_en', []));
+        $validated['include_id'] = array_filter($request->input('include_id', []));
+        $validated['exclude_en'] = array_filter($request->input('exclude_en', []));
+        $validated['exclude_id'] = array_filter($request->input('exclude_id', []));
 
-        // Status & slug
+        // 5. Slug & Status
         $validated['slug'] = Str::slug($validated['name_en']);
         $validated['is_featured'] = $request->has('is_featured');
         $validated['is_active'] = $request->has('is_active');
 
-        // Update package
+        // 6. Update Package
         $package->update($validated);
 
-        // Update pricing options
-        $package->pricingOptions()->delete();
+        // 7. Update Pricing Options
+        $package->pricingOptions()->delete(); // Hapus lama, simpan baru
         foreach ($request->pricing_options as $option) {
             $package->pricingOptions()->create([
                 'pax' => $option['pax'],

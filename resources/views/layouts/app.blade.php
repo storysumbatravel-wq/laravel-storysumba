@@ -23,7 +23,6 @@
     <meta property="og:image" content="@yield('og_image', asset('images/og-image.jpg'))">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="StorySumba">
 
     <!-- Twitter Card (Bonus: Agar share ke Twitter lebih bagus) -->
     <meta name="twitter:card" content="summary_large_image">
@@ -44,55 +43,14 @@
 
     <!-- 4. Google Analytics (GA4) -->
     <!-- Ganti 'G-XXXXXXXXXX' dengan ID Tracking kamu -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQP8TM0KWQ"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX'); // Ganti dengan ID kamu
-    </script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <!-- 3. Schema JSON-LD (Struktur Data untuk SEO) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "StorySumba",
-        "image": "{{ asset('images/logo.png') }}",
-        "url": "{{ config('app.url') }}",
-        "telephone": "+6281246994982",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Jl. Rambu Duka, RT. 026 / RW. 009, Kel. Prailiu, Kec. Kambera",
-            "addressLocality": "Sumba Timur",
-            "addressRegion": "Nusa Tenggara Timur",
-            "postalCode": "10220",
-            "addressCountry": "ID"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": -9.8892,
-            "longitude": 120.2619
-        },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            ],
-            "opens": "00:00",
-            "closes": "23:59"
-        },
-        "sameAs": [
-            "https://instagram.com/storysumba",
-            "https://www.facebook.com/storysumba"
-        ]
-    }
+      gtag('config', 'G-LQP8TM0KWQ');
     </script>
 
     @stack('styles')
